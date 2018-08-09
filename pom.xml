@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.uk.ac.ebi.pride.architectural</groupId>
+    <groupId>uk.ac.ebi.pride.architectural</groupId>
     <artifactId>pride-spring</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
+        <version>2.0.1.RELEASE</version>
     </parent>
 
     <name>PRIDE Spring dependencies</name>
@@ -43,6 +43,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
     <dependencies>
@@ -52,10 +53,10 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-devtools</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,12 +93,8 @@
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <!-- Prevent that nasty error from Java 8 DocLint new feature -->
                         <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
+                            <additionalparam>${javadoc.opts}</additionalparam>
                         </configuration>
                     </execution>
                 </executions>
@@ -122,14 +119,14 @@
         <repository>
             <id>pst-release</id>
             <name>EBI Nexus Repository</name>
-            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/ebi-release</url>
         </repository>
         <!-- Deployment to EBI's snapshot repository -->
         <snapshotRepository>
             <uniqueVersion>false</uniqueVersion>
             <id>pst-snapshots</id>
             <name>EBI Nexus Snapshots Repository</name>
-            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/ebi-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
